@@ -1,0 +1,57 @@
+.cus-wellbeing-assessment {
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+    */
+  /* HTML5 display-role reset for older browsers */
+}
+
+.cus-wellbeing-assessment html, .cus-wellbeing-assessment body, .cus-wellbeing-assessment div, .cus-wellbeing-assessment span, .cus-wellbeing-assessment applet, .cus-wellbeing-assessment object, .cus-wellbeing-assessment iframe,
+.cus-wellbeing-assessment h1, .cus-wellbeing-assessment h2, .cus-wellbeing-assessment h3, .cus-wellbeing-assessment h4, .cus-wellbeing-assessment h5, .cus-wellbeing-assessment h6, .cus-wellbeing-assessment p, .cus-wellbeing-assessment blockquote, .cus-wellbeing-assessment pre,
+.cus-wellbeing-assessment a, .cus-wellbeing-assessment abbr, .cus-wellbeing-assessment acronym, .cus-wellbeing-assessment address, .cus-wellbeing-assessment big, .cus-wellbeing-assessment cite, .cus-wellbeing-assessment code,
+.cus-wellbeing-assessment del, .cus-wellbeing-assessment dfn, .cus-wellbeing-assessment em, .cus-wellbeing-assessment img, .cus-wellbeing-assessment ins, .cus-wellbeing-assessment kbd, .cus-wellbeing-assessment q, .cus-wellbeing-assessment s, .cus-wellbeing-assessment samp,
+.cus-wellbeing-assessment small, .cus-wellbeing-assessment strike, .cus-wellbeing-assessment strong, .cus-wellbeing-assessment sub, .cus-wellbeing-assessment sup, .cus-wellbeing-assessment tt, .cus-wellbeing-assessment var,
+.cus-wellbeing-assessment b, .cus-wellbeing-assessment u, .cus-wellbeing-assessment i, .cus-wellbeing-assessment center,
+.cus-wellbeing-assessment dl, .cus-wellbeing-assessment dt, .cus-wellbeing-assessment dd, .cus-wellbeing-assessment ol, .cus-wellbeing-assessment ul, .cus-wellbeing-assessment li,
+.cus-wellbeing-assessment fieldset, .cus-wellbeing-assessment form, .cus-wellbeing-assessment label, .cus-wellbeing-assessment legend,
+.cus-wellbeing-assessment table, .cus-wellbeing-assessment caption, .cus-wellbeing-assessment tbody, .cus-wellbeing-assessment tfoot, .cus-wellbeing-assessment thead, .cus-wellbeing-assessment tr, .cus-wellbeing-assessment th, .cus-wellbeing-assessment td,
+.cus-wellbeing-assessment article, .cus-wellbeing-assessment aside, .cus-wellbeing-assessment canvas, .cus-wellbeing-assessment details, .cus-wellbeing-assessment embed,
+.cus-wellbeing-assessment figure, .cus-wellbeing-assessment figcaption, .cus-wellbeing-assessment footer, .cus-wellbeing-assessment header, .cus-wellbeing-assessment hgroup,
+.cus-wellbeing-assessment menu, .cus-wellbeing-assessment nav, .cus-wellbeing-assessment output, .cus-wellbeing-assessment ruby, .cus-wellbeing-assessment section, .cus-wellbeing-assessment summary,
+.cus-wellbeing-assessment time, .cus-wellbeing-assessment mark, .cus-wellbeing-assessment audio, .cus-wellbeing-assessment video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.cus-wellbeing-assessment article, .cus-wellbeing-assessment aside, .cus-wellbeing-assessment details, .cus-wellbeing-assessment figcaption, .cus-wellbeing-assessment figure,
+.cus-wellbeing-assessment footer, .cus-wellbeing-assessment header, .cus-wellbeing-assessment hgroup, .cus-wellbeing-assessment menu, .cus-wellbeing-assessment nav, .cus-wellbeing-assessment section {
+  display: block;
+}
+
+.cus-wellbeing-assessment body {
+  line-height: 1;
+}
+
+.cus-wellbeing-assessment ol, .cus-wellbeing-assessment ul {
+  list-style: none;
+}
+
+.cus-wellbeing-assessment blockquote, .cus-wellbeing-assessment q {
+  quotes: none;
+}
+
+.cus-wellbeing-assessment blockquote:before, .cus-wellbeing-assessment blockquote:after,
+.cus-wellbeing-assessment q:before, .cus-wellbeing-assessment q:after {
+  content: '';
+  content: none;
+}
+
+.cus-wellbeing-assessment table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*# sourceMappingURL=reset.css.map */
