@@ -1,4 +1,4 @@
-=== Chuck Norris Joke Generator ===
+=== Five Star Wellbeing Personal Assessment ===
 
 Plugin Name:  Wellness Assesment
 Description:  A wellness assessment design for Five Star Wellbeing
