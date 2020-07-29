@@ -240,19 +240,19 @@ class WellnessDatabase extends SQLite3{
 
     function insertResultParagraph($categoryScore){
         $veryHigh = <<<'EOD'
-            Very High:</b> Your score indicates you appear to be thriving in this area of 
+            Very High:</span></b> Your score indicates you appear to be thriving in this area of 
             wellbeing. Consider what is working, and be intentional to keep up habits 
             and practices that will maintain your wellbeing in this area.
         EOD;
 
         $high = <<<'EOD'
-            High:</b> You appear to be thriving in some aspects of this area. Consider what 
+            High:</span></b> You appear to be thriving in some aspects of this area. Consider what 
             is working and check your progress regularly to strengthen your wellbeing in 
             that area. What small thing might you do to improve this area of wellbeing?
         EOD;
 
         $neither = <<<'EOD'
-            Average:</b> Your score indicates you are currently surviving. 
+            Average:</span></b> Your score indicates you are currently surviving. 
             Surviving means there may be specific actions you can take that would have 
             immediate benefits for how you feel about your life. Were there times in your 
             life when you might have scored higher? If so, what was different? What were 
@@ -263,7 +263,7 @@ class WellnessDatabase extends SQLite3{
         EOD;
 
         $low = <<<'EOD'
-            Low:</b> Your score indicates that you may be suffering in this 
+            Low:</span></b> Your score indicates that you may be suffering in this 
             area of wellbeing at this moment in time. Low scores indicate a need for greater 
             attention to this aspect of your life. Research shows that extended periods of 
             suffering may put you at risk for physical or mental health problems. Think for a 
@@ -273,19 +273,28 @@ class WellnessDatabase extends SQLite3{
             in this area? 
         EOD;
 
-        $returnString = '<p><b>' . (string)$categoryScore . ' - ';
+        $returnString = '<p><b>'; 
+        $scoreColor;
+        $scoreMessage;
+
         if ($categoryScore >= 21){
-            $returnString .= $veryHigh;
+            $scoreColor .= "green";
+            $scoreMessage= $veryHigh;
         }
         elseif ($categoryScore >= 16){
-            $returnString .= $high;
+            $scoreColor .= "lightGreen";
+            $scoreMessage .= $high;
         }
         elseif ($categoryScore >= 11){
-            $returnString .= $neither;
+            $scoreColor .= "orange";
+            $scoreMessage .= $neither;
         }
         else{
-            $returnString .= $low;
+            $scoreColor .= "red";
+            $scoreMessage .= $low;
         }
+        $returnString .= "<span style='color: $scoreColor'>$categoryScore - ";
+        $returnString .= $scoreMessage;
         $returnString .= '</p>';
 
         return $returnString;

@@ -37,14 +37,12 @@
         $financialScore = $database -> getCategoryScore(4, $userSurveyID);
         $communityScore = $database -> getCategoryScore(5, $userSurveyID);
 
-        $chartOptionsString = "{type:'bar',data:{labels:['Purpose','Social','Physical','Financial','Community'],datasets:[{data:[" . $purposeScore . "," . $socialScore . "," .  $physicalScore . "," . $financialScore . "," . $communityScore . "],backgroundColor:['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)'],borderColor:['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)'],borderWidth:1}]},options:{legend:{display:!1},title:{display:!0,text:'Five Star Wellbeing Quality Of Life Assessment'},scales:{yAxes:[{ticks:{beginAtZero:!0,max:25},scaleLabel:{display:true,labelString:'Wellbeing Score'}}]}}}";
+        $chartOptionsString = "{type:'bar',data:{labels:['Purpose','Social','Physical','Financial','Community'],datasets:[{data:[" . $purposeScore . "," . $socialScore . "," .  $physicalScore . "," . $financialScore . "," . $communityScore . "],backgroundColor: ['rgba(40, 50, 119, 0.8)','rgba(115, 57, 131, 0.8)','rgba(12, 93, 52, 0.8)','rgba(223, 83, 47, 0.8)','rgba(164, 35, 40, 0.8)'],borderColor: ['rgba(40, 50, 119, 1)','rgba(115, 57, 131, 1)','rgba(12, 93, 52, 1)','rgba(223, 83, 47, 1)','rgba(164, 35, 40, 1)'],borderWidth:1}]},options:{legend:{display:!1},title:{display:!0,fontSize:20,text:'Five Star Wellbeing Quality Of Life Assessment'},scales:{yAxes:[{ticks:{beginAtZero:!0,max:25},scaleLabel:{display:true,labelString:'Wellbeing Score'}}]}}}";
 
-        $markup = $emailMarkup = "<div id='cus-results-wrapper'>";
         /*
             DYNAMICALLY GENERATED PAGE CONTENT:
         */
-        // echo ('<h2>' . $firstName . ', here are your results:</h2>');
-        // echo ('<p><b>Total Score: </b>'. (string)$totalScore . '</p>');
+        $markup = $emailMarkup = "<div id='cus-results-wrapper'>";
         $markup = $emailMarkup .= '<h2>' . $firstName . ', here are your results:</h2>';
         $markup = $emailMarkup .= '<p><b>Total Score: </b>'. (string)$totalScore . '</p>';
 
@@ -127,19 +125,19 @@
                     by being a part of something larger than ourselves.
                     </p>
                 EOD;
-        $markup .= '<h3>Purpose Wellbeing</h3>';
+        $markup .= '<h3 class="cus-purpose-header">Purpose Wellbeing</h3>';
         $markup .= $database -> insertResultParagraph($purposeScore);
         $markup .= $purposeText;
-        $markup .= '<h3>Social Wellbeing</h3>';
+        $markup .= '<h3 class="cus-social-header">Social Wellbeing</h3>';
         $markup .= $database -> insertResultParagraph($socialScore);
         $markup .= $socialText;
-        $markup .= '<h3>Physical Wellbeing</h3>';
+        $markup .= '<h3 class="cus-physical-header">Physical Wellbeing</h3>';
         $markup .= $database -> insertResultParagraph($physicalScore);
         $markup .= $physicalText;
-        $markup .= '<h3>Financial Wellbeing</h3>';
+        $markup .= '<h3 class="cus-financial-header">Financial Wellbeing</h3>';
         $markup .= $database -> insertResultParagraph($financialScore);
         $markup .= $financialText;
-        $markup .= '<h3>Community Wellbeing</h3>';
+        $markup .= '<h3 class="cus-community-header">Community Wellbeing</h3>';
         $markup .= $database -> insertResultParagraph($communityScore);
         $markup .= $communityText;
         $markup .= '</div>';
@@ -172,7 +170,7 @@
         $headers .= 'From: luke.melong13@outlook.com' . "\r\n";
         add_filter( 'wp_mail_content_type','wpse27856_set_content_type' );
 
-        echo wp_mail( $to, $subject, $emailMarkup );
+        // wp_mail( $to, $subject, $emailMarkup );
 
         $database->close_connection();
         unset($database);
@@ -181,22 +179,12 @@
     function wpse27856_set_content_type(){
         return "text/html";
     }
-    
-    function mailtrap($phpmailer) {
-        $phpmailer->isSMTP();
-        $phpmailer->Host = 'smtp.mailtrap.io';
-        $phpmailer->SMTPAuth = true;
-        $phpmailer->Port = 25;
-        $phpmailer->Username = '86773772ca2a7d';
-        $phpmailer->Password = '35b7ae39b54bca';
-    }
-     
-    add_action('phpmailer_init', 'mailtrap');
+
 ?>
 
 
 <!-- Javascript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script> -->
 <script>
 
 let purposeScore = <?php echo $purposeScore; ?>;
@@ -205,53 +193,49 @@ let physicalScore = <?php echo $physicalScore; ?>;
 let financialScore = <?php echo $financialScore; ?>;
 let communityScore = <?php echo $communityScore; ?>;
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Purpose', 'Social', 'Physical', 'Financial', 'Community'],
-        datasets: [{
-            data: [purposeScore, socialScore, physicalScore, financialScore, communityScore],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        legend: { display: false },
-        title: {
-            display: true,
-            text: "Five Star Wellbeing Quality Of Life Assessment"
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    max: 25
-                },
-                scaleLabel: {
-                    display: true,
-                    labelString: "Wellbeing Score"
-                }
-            }]
-        }
-    }
-});
-    // let chartOptionsString = "{type:'bar',data:{labels:['Purpose','Social','Physical','Financial','Community'],datasets:[{data:[" + purposeScore + "," + socialScore + "," +  physicalScore + "," + financialScore + "," + communityScore + "],backgroundColor:['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)'],borderColor:['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)'],borderWidth:1}]},options:{legend:{display:!1},title:{display:!0,text:'Wellbeing Scores'},scales:{yAxes:[{ticks:{beginAtZero:!0,max:25}}]}}}"
-    // console.log(chartOptionsString)
-    // document.getElementById('cus-testImage').src = "https://quickchart.io/chart?c=" + chartOptionsString
+// var ctx = document.getElementById('myChart').getContext('2d');
+// var myChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//         labels: ['Purpose', 'Social', 'Physical', 'Financial', 'Community'],
+//         datasets: [{
+//             data: [purposeScore, socialScore, physicalScore, financialScore, communityScore],
+//             backgroundColor: [
+//                 'rgba(40, 50, 119, 0.8)',
+//                 'rgba(115, 57, 131, 0.8)',
+//                 'rgba(12, 93, 52, 0.8)',
+//                 'rgba(223, 83, 47, 0.8)',
+//                 'rgba(164, 35, 40, 0.8)'
+//             ],
+//             borderColor: [
+//                 'rgba(40, 50, 119, 1)',
+//                 'rgba(115, 57, 131, 1)',
+//                 'rgba(12, 93, 52, 1)',
+//                 'rgba(223, 83, 47, 1)',
+//                 'rgba(164, 35, 40, 1)'
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         legend: { display: false },
+//         title: {
+//             display: true,
+//             fontSize: 20,
+//             text: "Five Star Wellbeing Quality Of Life Assessment"
+//         },
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true,
+//                     max: 25
+//                 },
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: "Wellbeing Score"
+//                 }
+//             }]
+//         }
+//     }
+// });
 </script>

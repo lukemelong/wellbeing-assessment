@@ -31,12 +31,17 @@ function load_bootstrap() {
 add_action( 'wp_enqueue_scripts', 'load_bootstrap' );
 
 // Add custom css
-function load_custom_css() {
+function load_custom_css( $hook ) {
 	$plugin_url = plugin_dir_url( __FILE__ );
 
 	// wp_enqueue_style( 'reset-css',  $plugin_url . "/public/css/reset.css");
 	wp_enqueue_style( 'wellbeing-assessment',  $plugin_url . "/public/css/wellbeing-assessment.css");
-	wp_enqueue_style( 'submit-page',  $plugin_url . "/public/css/submit-form.css");
+
+	echo "<h1>$hook</h1>";
+	if( 'admin-post.php' == $hook ){
+		wp_enqueue_style( 'submit-page',  $plugin_url . "/public/css/submit-form.css");
+	}
+	
 }
 add_action( 'wp_print_styles', 'load_custom_css' );
 
@@ -55,9 +60,19 @@ function myplugin_options_default() {
 	);
 	
 }
+function submit_form_css( $hook ){
+
+	if( 'admin-post.php' != $hook ){
+		return;
+	}
+
+	wp_enqueue_script('submit-form-js', plugin_dir_path(__FILE__) . 'public/js/graph.js');
+	wp_enqueue_script('chart-js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js');
+}
+add_action('admin_enqueue_scripts', 'submit_form_css');
 
 function cus_form_submit() {
 	include_once(plugin_dir_path(__FILE__) . 'includes/submit-form.php');
-	// echo "Test";
 }
+add_action( 'admin_post', 'cus_form_submit');
 add_action( 'admin_post_nopriv', 'cus_form_submit');

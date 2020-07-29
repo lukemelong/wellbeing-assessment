@@ -3,12 +3,12 @@
 /****************************/
 /* Fonts */
 $global-font: Arial, Helvetica, sans-serif;
-$p-font-size: 16px;
+$p-font-size: 14px;
 $h2-font-size: 50px;
 /* Colours */
 $main-background-color: white;
-$carousel-colour-primary: gainsboro;
-$carousel-colour-secondary: whitesmoke;
+$carousel-colour-primary: white;
+$carousel-colour-secondary: #efefef;
 $standard-border: 1px solid black;
 $indicator-color: black;
 $indicator-color-active: grey;
@@ -18,9 +18,9 @@ $standard-border-radius: 5px;
 /* Global Wrapper for Plugin */
 .cus-wellbeing-assessment{
     font-family: $global-font;
-    background-color: $main-background-color;
-    border: $standard-border;
-    border-radius: $standard-border-radius;
+    // background-color: $main-background-color;
+    // border: $standard-border;
+    // border-radius: $standard-border-radius;
     p{
         font-size: $p-font-size;
     }
@@ -33,6 +33,8 @@ $standard-border-radius: 5px;
 
 #cus-carousel-assessment{
     padding-top: 30px;
+    max-width: 40vw;
+    margin: auto;
 }
 
 .cus-intro-text{
@@ -67,13 +69,15 @@ $standard-border-radius: 5px;
 }
 /* Custom question container */
 .question{
-    border-bottom: $standard-border;
+    // border-bottom: $standard-border;
     padding: 20px 0 20px 0;
 }
 
 /* Custom question text */
 .cus-question-text{
     text-align: center;
+    color: #425967;
+    font-weight: bolder;
 }
 
 /* Custom carousel links for controling the carousel */
@@ -111,6 +115,8 @@ $standard-border-radius: 5px;
 
 #cus-user-questions{
     padding: 50px;
+    max-width: 70%;
+    margin: auto;
 }
 
 .cus-user-gender{
@@ -139,7 +145,7 @@ $standard-border-radius: 5px;
 
 /* Custom Radio Buttons */
 .cus-toggle {
-    margin: 0 0 1.5rem;
+    // margin: 0 0 1.5rem;
     box-sizing: border-box;
     font-size: 0;
     display: -webkit-box;
@@ -159,16 +165,16 @@ $standard-border-radius: 5px;
         left: -9999px;
         + label {
             margin: 0;
-            padding: .75rem 2rem;
+            padding: 7.5px 20px;
             box-sizing: border-box;
             /* position: relative; */
             display: inline-block;
             border: solid 1px #DDD;
             background-color: white;
             // background-color: #ebebeb;
-            font-size: 1rem;
+            font-size: 10px;
             line-height: 140%;
-            font-weight: 600;
+            // font-weight: 600;
             text-align: center;
             box-shadow: 0 0 0 rgba(255, 255, 255, 0);
             -webkit-transition: border-color .15s ease-out,  color .25s ease-out,  background-color .15s ease-out, box-shadow .15s ease-out;
@@ -199,13 +205,13 @@ $standard-border-radius: 5px;
     .cus-toggle input + label {
         padding: .75rem .25rem;
         -webkit-box-flex: 0;
-                flex: 0 0 50%;
+        // flex: 0 0 50%;
         display: -webkit-box;
         display: flex;
         -webkit-box-pack: center;
-                justify-content: center;
+        justify-content: center;
         -webkit-box-align: center;
-                align-items: center;
+        align-items: center;
     }
 }
 

@@ -504,14 +504,27 @@
                 </div>
                 <div class="carousel-item">
                     <div id="cus-user-questions">
-                        <label for="userFirstName">First Name</label>
-                        <input type="text" id="userFirstName" name="userFirstName"><br>
-                        <label for="userLastName">Last Name</label>
-                        <input type="text" id="userLastName" name="userLastName"><br>
-                        <label for="userAge">Age</label>
-                        <input type="text" id="userAge" name="userAge"><br>
-                        <label for="userEmail">Email</label>
-                        <input type="text" id="userEmail" name="userEmail"><br>
+                        <div class="form-group">
+                            <label for="userFirstName">First Name</label>
+                            <input type="text" class="form-control" id="cus-userFirstName" name="userFirstName">
+                            <span id="cus-first-name-error" class="cus-question-not-answered"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="userLastName">Last Name</label>
+                            <input type="text" class="form-control" id="cus-userLastName" name="userLastName">
+                            <span id="cus-last-name-error" class="cus-question-not-answered"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="userAge">Age</label>
+                            <input type="number" class="form-control" id="cus-userAge" name="userAge" min="0" max="120">
+                            <span id="cus-age-error" class="cus-question-not-answered"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="text" class="form-control" id="cus-userEmail" name="userEmail">
+                            <span id="cus-email-error" class="cus-question-not-answered"></span>
+                        </div>
+
                         <p>Gender (optional)</p>
                         <div class="cus-user-gender">
                             <input type="radio" id="genderFemale" name="userGender" value="Female">
@@ -523,8 +536,17 @@
                             <input type="radio" id="genderOther" name="userGender" value="NULL">
                             <label for="genderOther">Other</label><br>
                         </div>
+
+                        <div id="cus-group-code">
+                            <button class="btn btn-secondary" type="button" id="cus-group-code-button">I have a group code</button>
+                            <div class="form-group" id="cus-group-code-form-group" style="display: none;">
+                                <label for="group-code">Group Code</label>
+                                <input type="text" class="form-control" id="cus-group-code-input" name="group-code">
+                                <span id="cus-group-code-error" class="cus-question-not-answered"></span>
+                            </div>
+                        </div>
                     </div>
-                    <button id="cus-submit-button" type="submit" class="btn btn-primary cus-submit-button">Submit</button>
+                    <button id="cus-submit-button" type="button" class="btn btn-primary cus-submit-button">Submit</button>
                 </div>
             </div>
             <div class="cus-controls-container">
@@ -536,7 +558,6 @@
                     <li data-target="#cus-carousel-assessment" data-slide-to="4"></li>
                     <li data-target="#cus-carousel-assessment" data-slide-to="5"></li>
                 </ol>
-
                 <div class="cus-car-button-cont">
                     <a id="cus-carousel-prev" class="cus-car-control carousel-control-prev" href="#cus-carousel-assessment" role="button" data-slide="prev" style="visibility: hidden;">
                         <span class="btn btn-outline-primary cus-car-button" style="margin-right: 20px" aria-hidden="true">Previous</span>
